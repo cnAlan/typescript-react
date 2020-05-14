@@ -1,13 +1,13 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
-import { demoReducer } from './demo/reducer';
-import { IDemoState } from './demo/types';
+import { homeReducer } from './Home/reducer';
+import { HomeState } from './Home/types';
 import { connectRouter, RouterState, routerMiddleware as createRouterMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 import { composeEnhancers } from './utils'
 
 export interface IRootState {
     router: RouterState,
-    demo: IDemoState
+    Home: HomeState
 }
 
 export const history = createBrowserHistory();
@@ -20,7 +20,7 @@ const initState = {}
 const store = createStore(
     combineReducers({
         router: connectRouter(history),
-        demo: demoReducer
+        Home: homeReducer
     }),
     initState,
     enhancer
